@@ -127,7 +127,15 @@ elif work == 'Self Employed':
 
 #work = st.number_input('Your Worktype ?')
 
-residence = st.number_input('Your Residence Type ? (0 = Rural, 1 = Urban)')
+res = st.radio("Your Residence Type ?",('Rural', 'Urban'))
+if res == 'Rural':
+  res2 = res.replace('Rural', '0')
+  res3 = float(res2)
+elif res == 'Urban':
+  res2 = res.replace('Urban', '1')
+  res3 = float(res2)
+
+#residence = st.number_input('Your Residence Type ? (0 = Rural, 1 = Urban)')
 
 avg = st.number_input('Average Glucose Level ?')
 
@@ -149,7 +157,7 @@ elif smoke == 'Unknown':
 
 #smoke = st.number_input('Your smoking status ?')
 
-Xnew3 = [[gender3, age, hypertension3, heart3, marry3, work3, residence, avg, bmi, smoke3]]
+Xnew3 = [[gender3, age, hypertension3, heart3, marry3, work3, res3, avg, bmi, smoke3]]
 
 y_pred_prob4 = rfc.predict_proba(Xnew3)
 y_pred_prob_df4 = pd.DataFrame(data=y_pred_prob4, columns=['Prob of dont have stroke', 'Prob of have stroke'])
