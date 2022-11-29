@@ -79,7 +79,13 @@ elif gender == 'Other':
 
 age = st.number_input('Age')
 
-hypertension = st.number_input('Blood Pressure')
+hypertension = st.radio("Do You have hypertension ?",('No', 'Yes'))
+if hypertension == 'No':
+  hypertension2 = hypertension.replace('No', '0')
+  hypertension3 = float(hypertension2)
+elif hypertension == 'Yes':
+  hypertension2 = hypertension.replace('Yes', '1')
+  hypertension3 = float(hypertension2)
 
 
 heart = st.radio("Do You have heart Disease ?",('No', 'Yes'))
@@ -143,7 +149,7 @@ elif smoke == 'Unknown':
 
 #smoke = st.number_input('Your smoking status ?')
 
-Xnew3 = [[gender3, age, hypertension, heart3, marry3, work3, residence, avg, bmi, smoke3]]
+Xnew3 = [[gender3, age, hypertension3, heart3, marry3, work3, residence, avg, bmi, smoke3]]
 
 y_pred_prob4 = rfc.predict_proba(Xnew3)
 y_pred_prob_df4 = pd.DataFrame(data=y_pred_prob4, columns=['Prob of dont have stroke', 'Prob of have stroke'])
