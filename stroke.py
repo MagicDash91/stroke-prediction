@@ -60,7 +60,7 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2,random_state=0)
 
 from sklearn.ensemble import RandomForestClassifier
-rfc = RandomForestClassifier()
+rfc = RandomForestClassifier(random_state=0)
 rfc.fit(X_train, y_train)
 
 
